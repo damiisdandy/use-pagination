@@ -25,6 +25,38 @@ html {
   color: white;
 }
 
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.pagination .text {
+  opacity: 0.6;
+  font-size: 1.5rem;
+}
+
+.page {
+  color: white;
+  height: 3rem;
+  width: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  border: solid 0.2rem #4aa5be;
+  background-color: transparent;
+  border-radius: 0.7rem;
+  cursor: pointer;
+}
+
+.page.active,
+.page:hover {
+  background-color: #4aa5be;
+}
+
 h2 {
   margin-top: 4rem;
   text-align: center;

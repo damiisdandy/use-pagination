@@ -21,7 +21,7 @@ const usePagination: UsePagination = ({ contentPerPage, count }) => {
         return state + 1;
         // go back
       } else {
-        // if page is the first page do nothing
+        // if page is the first page, do nothing
         if (state === 1) {
           return state;
         }
@@ -31,10 +31,10 @@ const usePagination: UsePagination = ({ contentPerPage, count }) => {
   };
 
   const setPageSAFE = (num: number) => {
-    // if number is greater than number of pages set to last page
+    // if number is greater than number of pages, set to last page
     if (num > pageCount) {
       setPage(pageCount);
-      // if number is less than 1 set page to first page
+      // if number is less than 1, set page to first page
     } else if (num < 1) {
       setPage(1);
     } else {
