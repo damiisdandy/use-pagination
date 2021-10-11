@@ -47,7 +47,10 @@ function App() {
             <p className="text">
               {page}/{totalPages}
             </p>
-            <button onClick={prevPage} className="page">
+            <button
+              onClick={prevPage}
+              className={`page ${page === 1 && "disabled"}`}
+            >
               &larr;
             </button>
             {/* @ts-ignore */}
@@ -60,7 +63,10 @@ function App() {
                 {el + 1}
               </button>
             ))}
-            <button onClick={nextPage} className="page">
+            <button
+              onClick={nextPage}
+              className={`page ${page === totalPages && "disabled"}`}
+            >
               &rarr;
             </button>
           </div>

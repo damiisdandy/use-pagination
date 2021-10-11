@@ -57,6 +57,12 @@ html {
   background-color: #4aa5be;
 }
 
+.page.disabled {
+  background-color: transparent !important;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
 h2 {
   margin-top: 4rem;
   text-align: center;
