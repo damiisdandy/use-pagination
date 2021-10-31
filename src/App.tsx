@@ -40,7 +40,7 @@ function App() {
       {loading ? (
         <h2>Loading...</h2>
       ) : error ? (
-        <h2>Error fetching data</h2>
+        <h2>Error fetching users</h2>
       ) : (
         <>
           <div className="pagination">
