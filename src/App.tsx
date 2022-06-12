@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "./logo.svg";
 import axios from "axios";
 import usePagination from "./hooks/usePagination";
-
+//add input for specific page
 function App() {
   const [people, setPeople] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -13,17 +13,18 @@ function App() {
     nextPage,
     prevPage,
     page,
+    gaps,
     setPage,
     totalPages,
   } = usePagination({
-    contentPerPage: 3,
+    contentPerPage: 15,
     count: people.length,
   });
   useEffect(() => {
     (async () => {
       try {
         const data = await axios.get(
-          "https://random-data-api.com/api/users/random_user?size=20"
+          "https://random-data-api.com/api/users/random_user?size=100"
         );
         setPeople(data.data);
       } catch {
@@ -53,16 +54,30 @@ function App() {
             >
               &larr;
             </button>
+            <button
+              onClick={() => setPage(1)}
+              className={`page ${page === 1 && "disabled"}`}
+            >
+              1
+            </button>
+            {gaps.before ? "..." : null}
             {/* @ts-ignore */}
-            {[...Array(totalPages).keys()].map((el) => (
+            {gaps.paginationGroup.map((el) => (
               <button
-                onClick={() => setPage(el + 1)}
+                onClick={() => setPage(el)}
                 key={el}
-                className={`page ${page === el + 1 ? "active" : ""}`}
+                className={`page ${page === el ? "active" : ""}`}
               >
-                {el + 1}
+                {el}
               </button>
             ))}
+            {gaps.after ? "..." : null}
+            <button
+              onClick={() => setPage(totalPages)}
+              className={`page ${page === totalPages && "disabled"}`}
+            >
+              {totalPages}
+            </button>
             <button
               onClick={nextPage}
               className={`page ${page === totalPages && "disabled"}`}
